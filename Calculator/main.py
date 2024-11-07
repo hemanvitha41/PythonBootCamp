@@ -46,21 +46,25 @@ def calculator_program():
     print(f"Result: {first_number} {choice} {second_number} = {result}")
     should_continue = True
     choice3 = input(f"Type 'y' to continue with {result} or 'n' to stop: ")
-    while should_continue:
-        select_operation = input("+\n-\n*\n/\nPick an Operation: ")
-        next_number = float(input("Enter next number: "))
-        result1 = calculator[select_operation](result, next_number)
-        print(f"Result: {result} {select_operation} {next_number} = {result1}")
-        choice2 = input(f"Type 'y' to continue with {result1} or 'n' to stop: ")
+    if choice3 == "y":
+        while should_continue:
+            select_operation = input("+\n-\n*\n/\nPick an Operation: ")
+            next_number = float(input("Enter next number: "))
+            result1 = calculator[select_operation](result, next_number)
+            print(f"Result: {result} {select_operation} {next_number} = {result1}")
+            choice2 = input(f"Type 'y' to continue with {result1} or 'n' to stop: ")
 
-        if choice2 == "n":
-            should_continue = False
-            calculator_program()  # Start a new calculation
-        elif choice2 == "exit":
-            should_continue = False
-            print("Calculator stopped.")
-        elif choice2 != "y":
-            print("Invalid input. Please type 'y', 'n', or 'exit'.")
+            if choice2 == "n":
+                should_continue = False
+                calculator_program()  # Start a new calculation
+            elif choice2 == "exit":
+                should_continue = False
+                print("Calculator stopped.")
+            elif choice2 != "y":
+                print("Invalid input. Please type 'y', 'n', or 'exit'.")
+    else:
+        print("\n" * 50)
+        calculator_program()
 
 
 calculator_program()
